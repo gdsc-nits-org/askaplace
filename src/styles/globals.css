@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    --text-color-white: white;
+    --text-color-black: black;
+    --text-color-red: red;
+    --text-color-primary: #224259;
+    --text-color-primary-light: #3e618e;
+    --text-color-grey: #505050;
+    --text-color-grey-light: #ccc;
+}
