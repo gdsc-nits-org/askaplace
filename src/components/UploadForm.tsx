@@ -40,8 +40,34 @@ type UploadFormProps = {
 
 const UploadForm: React.FC<UploadFormProps> = ({ mode, placeId }) => {
   const router = useRouter();
-  const [expenses, setExpenses] = useState<ExpenseFormData[]>([]);
-  const [stayOptions, setStayOptions] = useState<StayFormData[]>([]);
+  const [stayOptions, setStayOptions] = useState<StayFormData[]>([
+    {
+      name: "",
+      type: "",
+      website: "",
+      location: "",
+      landmark: "",
+      contact: "",
+      manager: "",
+
+    }
+  ]);
+
+  const [expenses, setExpenses] = useState<ExpenseFormData[]>([
+    {
+      name: "",
+
+      rate: "",
+      total: "",
+    }
+  ]);
+
+
+  // const [formData, setFormData] = useState<FormData>({
+  //   stay: stayOptions,
+  //   expenses: expenses
+  // });
+
   const [formData, setFormData] = useState<PlaceFormData>({
     photos: [],
     place: '',
@@ -90,37 +116,60 @@ const UploadForm: React.FC<UploadFormProps> = ({ mode, placeId }) => {
     }
   };
 
+  // const handleStayChange = (index: number, field: keyof StayFormData, value: string) => {
+  //   const updatedStay = [...stayOptions];
+  //   updatedStay[index] = {
+  //     ...updatedStay[index],
+  //     [field]: value || "",
+  //     name: updatedStay[index]?.name || "",
+  //     type: updatedStay[index]?.type || "",
+  //     website: updatedStay[index]?.website || "",
+  //     location: updatedStay[index]?.location || "",
+  //     landmark: updatedStay[index]?.landmark || "",
+  //     contact: updatedStay[index]?.contact || "",
+  //     manager: updatedStay[index]?.manager || "",
+  //   };
+  //   setStayOptions(updatedStay);
+  //   setFormData(prev => ({ ...prev, stay: updatedStay }));
+  // };
+
   const handleStayChange = (index: number, field: keyof StayFormData, value: string) => {
     const updatedStay = [...stayOptions];
     updatedStay[index] = {
       ...updatedStay[index],
-      [field]: value || "",
-      name: updatedStay[index]?.name || "",
-      type: updatedStay[index]?.type || "",
-      website: updatedStay[index]?.website || "",
-      location: updatedStay[index]?.location || "",
-      landmark: updatedStay[index]?.landmark || "",
-      contact: updatedStay[index]?.contact || "",
-      manager: updatedStay[index]?.manager || "",
+      [field]: value,
     };
     setStayOptions(updatedStay);
-  };
-
-  const addStay = () => {
-    setFormData(prev => ({ ...prev, stay: [...prev.stay, { name: '', type: '', website: '', location: '', landmark: '', contact: '', manager: '' }] }));
+    setFormData(prev => ({ ...prev, stay: updatedStay }));
   };
 
   const handleExpenseChange = (index: number, field: keyof ExpenseFormData, value: string) => {
     const updatedExpenses = [...expenses];
     updatedExpenses[index] = {
       ...updatedExpenses[index],
-      [field]: value || "",
-      name: updatedExpenses[index]?.name || "",
-      rate: updatedExpenses[index]?.rate || "",
-      total: updatedExpenses[index]?.total || "",
+      [field]: value,
     };
     setExpenses(updatedExpenses);
+    setFormData(prev => ({ ...prev, expenses: updatedExpenses }));
   };
+
+
+  const addStay = () => {
+    setFormData(prev => ({ ...prev, stay: [...prev.stay, { name: '', type: '', website: '', location: '', landmark: '', contact: '', manager: '' }] }));
+  };
+
+  // const handleExpenseChange = (index: number, field: keyof ExpenseFormData, value: string) => {
+  //   const updatedExpenses = [...expenses];
+  //   updatedExpenses[index] = {
+  //     ...updatedExpenses[index],
+  //     [field]: value || "",
+  //     name: updatedExpenses[index]?.name || "",
+  //     rate: updatedExpenses[index]?.rate || "",
+  //     total: updatedExpenses[index]?.total || "",
+  //   };
+  //   setExpenses(updatedExpenses);
+  //   setFormData(prev => ({ ...prev, expenses: updatedExpenses }));
+  // };
 
   const addExpense = () => {
     setFormData(prev => ({ ...prev, expenses: [...prev.expenses, { name: '', rate: '', total: '' }] }));
@@ -130,6 +179,7 @@ const UploadForm: React.FC<UploadFormProps> = ({ mode, placeId }) => {
     const updatedPlaces = [...formData.nearbyTouristPlaces];
     updatedPlaces[index] = value;
     setFormData(prev => ({ ...prev, nearbyTouristPlaces: updatedPlaces }));
+
   };
 
   const addNearbyPlace = () => {
@@ -159,7 +209,7 @@ const UploadForm: React.FC<UploadFormProps> = ({ mode, placeId }) => {
 
   return (
     <div className="max-w-3xl mx-auto p-6 bg-white rounded-lg shadow-md">
-       <h2 className="text-2xl font-semibold mb-4">{mode === 'upload' ? 'Upload a Place' : 'Modify Place Details'}</h2>
+      <h2 className="text-2xl font-semibold mb-4">{mode === 'upload' ? 'Upload a Place' : 'Modify Place Details'}</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input type="text" name="place" placeholder="Place Name" value={formData.place} onChange={handleChange} className="w-full p-2 border rounded" required />
         <textarea name="description" placeholder="Description" value={formData.description} onChange={handleChange} className="w-full p-2 border rounded" required />
@@ -174,21 +224,126 @@ const UploadForm: React.FC<UploadFormProps> = ({ mode, placeId }) => {
         <h3 className="text-xl font-semibold mt-4">Add Stay Options</h3>
         {formData.stay.map((stay, index) => (
           <div key={index} className="space-y-2 border p-2 rounded">
-            <input type="text" name="name" placeholder="Stay Name" value={stay.name} onChange={(e) => handleStayChange(index, 'name', e.target.value)} className="w-full p-2 border rounded" required />
-            <input type="text" name="type" placeholder="Type" value={stay.type} onChange={(e) => handleStayChange(index, 'name', e.target.value)} className="w-full p-2 border rounded" required />
-            <input type="text" name="location" placeholder="Location" value={stay.location} onChange={(e) => handleStayChange(index, 'name', e.target.value)} className="w-full p-2 border rounded" required />
+            {/* Stay Name */}
+            <input
+              type="text"
+              placeholder="Stay Name"
+              value={stay.name}
+              onChange={(e) => handleStayChange(index, 'name', e.target.value)}
+              className="w-full p-2 border rounded"
+              required
+            />
+
+            {/* Type */}
+            <input
+              type="text"
+              placeholder="Type"
+              value={stay.type}
+              onChange={(e) => handleStayChange(index, 'type', e.target.value)}
+              className="w-full p-2 border rounded"
+              required
+            />
+
+            {/* Website */}
+            <input
+              type="text"
+              placeholder="Website"
+              value={stay.website}
+              onChange={(e) => handleStayChange(index, 'website', e.target.value)}
+              className="w-full p-2 border rounded"
+            />
+
+            {/* Location */}
+            <input
+              type="text"
+              placeholder="Location"
+              value={stay.location}
+              onChange={(e) => handleStayChange(index, 'location', e.target.value)}
+              className="w-full p-2 border rounded"
+              required
+            />
+
+            {/* Landmark */}
+            <input
+              type="text"
+              placeholder="Landmark"
+              value={stay.landmark}
+              onChange={(e) => handleStayChange(index, 'landmark', e.target.value)}
+              className="w-full p-2 border rounded"
+            />
+
+            {/* Contact */}
+            <input
+              type="text"
+              placeholder="Contact"
+              value={stay.contact}
+              onChange={(e) => handleStayChange(index, 'contact', e.target.value)}
+              className="w-full p-2 border rounded"
+            />
+
+            {/* Manager */}
+            <input
+              type="text"
+              placeholder="Manager"
+              value={stay.manager}
+              onChange={(e) => handleStayChange(index, 'manager', e.target.value)}
+              className="w-full p-2 border rounded"
+            />
+
+
           </div>
         ))}
-        <button type="button" onClick={addStay} className="bg-green-500 text-white py-1 px-3 rounded">Add Stay</button>
+        <button type="button" onClick={addStay} className="bg-green-500 text-white py-1 px-3 rounded">
+          Add Stay
+        </button>
+
 
         <h3 className="text-xl font-semibold mt-4">Estimated Expenses</h3>
         {formData.expenses.map((expense, index) => (
           <div key={index} className="space-y-2 border p-2 rounded">
-            <input type="text" name="name" placeholder="Expense Name" value={expense.name} onChange={(e) => handleExpenseChange(index, 'name', e.target.value)} className="w-full p-2 border rounded" required />
+            {/* Expense Name */}
+            <input
+              type="text"
+              name="name"
+              placeholder="Expense Name"
+              value={expense.name}
+              onChange={(e) => handleExpenseChange(index, 'name', e.target.value)}
+              className="w-full p-2 border rounded"
+              required
+            />
+
+            {/* Rate */}
+            <input
+              type="number"
+              name="rate"
+              placeholder="Rate"
+              value={expense.rate}
+              onChange={(e) => handleExpenseChange(index, 'rate', e.target.value)}
+              className="w-full p-2 border rounded"
+              required
+            />
+
+
+            {/* Total */}
+            <input
+              type="number"
+              name="total"
+              placeholder="Total"
+              value={expense.total}
+              onChange={(e) => handleExpenseChange(index, 'total', e.target.value)}
+              className="w-full p-2 border rounded"
+              required
+            />
           </div>
         ))}
-        <button type="button" onClick={addExpense} className="bg-green-500 text-white py-1 px-3 rounded">Add Expense</button>
-        
+        <button
+          type="button"
+          onClick={addExpense}
+          className="bg-green-500 text-white py-1 px-3 rounded"
+        >
+          Add Expense
+        </button>
+
         <h3 className="text-xl font-semibold mt-4">Nearby Tourist Places</h3>
         {formData.nearbyTouristPlaces.map((place, index) => (
           <div key={index} className="space-y-2 border p-2 rounded">
