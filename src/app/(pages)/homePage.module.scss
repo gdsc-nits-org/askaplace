@@ -6,8 +6,8 @@ body{
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 55rem;
-    padding-left: 8rem;
+    gap: 50rem;
+    padding-left: 12rem;
 }
 .title{
     height: 16rem;
@@ -48,50 +48,97 @@ body{
     grid-template-columns: repeat(auto-fit,minmax(350px,1fr));
     gap:10rem;
     padding: 1rem 8rem 1rem 8rem;
-
 }
 
 
 .card {
     background: white;
-    border-radius: 10px;
+    border-radius: 40px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.3s ease-in-out;
+    border: 2px solid black;
+    position: relative;
+    width: 100%;
+    height: 45rem;
 }
 
 .card:hover {
     transform: scale(1.05);
 }
 
+
 .card img {
     width: 100%;
-    height: 350px;
+    height: auto;
     object-fit: cover;
+    display: block;
     border-bottom: 2px solid #ddd;
+    position: relative;
 }
 
 .cardContent{
-    padding: 15px;
-    height: 230px;
-    left: 0;
+    padding: 40px;
+    height: 400px;
     width: 100%;
-    border-top-left-radius: 10px;
+    border-radius: 25px;
+    position: absolute;
+    top: 23rem;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    z-index: 1;
+}
+.like{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 5%;
+    left:80%;
+}
+
+.ratingBox{
+    position: absolute;
+    top: 48%;
+    left: 55%;
+    background: white;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 2;
+    height: 45px;
+    width: 200px;
+    border: 0.1  grey;
+}
+.reviews{
+    font-weight: 500;
+    color: grey;
 }
 
 .placeName {
-    font-size: 22px;
+    font-size: 25px;
     margin: 10px 0;
-    color: #333;
-    font-weight: bold;
-    padding-bottom: 5px;
+    color: black;
+    font-weight: 500;
+    padding-top: 10px;
 }
 
 
-
-.card p {
-    font-size: 16px;
-    color: #666;
+.description1 ,.description2{
+    font-size: 20px;
+    color: gray;
 }
 
 .cardInfo{
@@ -99,8 +146,6 @@ body{
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
-    font-size: 14px;
-    color: #555;
     padding-top: 1rem;
 }
 
@@ -108,28 +153,31 @@ body{
     display: flex;
     align-items: center;
     gap: 5px;
-    font-weight: bold;
+    font-weight: 500;
     color: black;
+    font-size: 25px;
 }
+
 
 .cardDetail{
     display: flex;
     justify-content: space-between;
-    align-items: center;
     margin-bottom: 10px;
-    font-size: 14px;
-    color: #555;
-    padding-top: 1rem;
+    padding-top: 3rem;
 }
+
 .time{
     display: flex;
     align-items: center;
-    gap: 5px;
-    font-weight: bold;
+    font-weight: 500;
+    gap: 10px;
     color: black;
+    font-size: 25px;
 }
 .price {
-    font-size: 16px;
-    font-weight: bold;
-    color: #ff5722;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 25px;
+    font-weight: 500;
 }
