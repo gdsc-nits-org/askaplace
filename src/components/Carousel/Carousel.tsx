@@ -9,7 +9,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 export const Carousel = () => {
-  
   return (
     <div className={styles.sliderContainer}>
       <p className={styles.headline}>Get inspiration for your next trip</p>
