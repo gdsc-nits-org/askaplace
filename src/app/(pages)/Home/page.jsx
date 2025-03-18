@@ -1,13 +1,12 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/jsx-key */
 
 import styles from "./homePage.module.scss"
 import Image from "next/image"
-import cards from "../../../public/data/cards.json"
+import cards from "../../../../public/data/cards.json"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import { faClock, faIndianRupeeSign, faMapMarkerAlt, faStar,  } from "@fortawesome/free-solid-svg-icons"
-import StarRating from "./rating"
+import StarRating from "../rating"
 import {faHeart} from "@fortawesome/free-regular-svg-icons"
 
 
@@ -22,7 +21,7 @@ const Home = () => {
     <div className={styles.devGrid} >
         {cards.map((card)=>{
           return(
-            <div className={styles.card} >
+            <div className={styles.card} key={String(card.id)} >
             <img src={card.image} alt="image" />
             {/* {like} */}
             <div className={styles.like}><FontAwesomeIcon icon={faHeart} width={25} height={25} color="green"/></div>
