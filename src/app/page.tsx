@@ -1,12 +1,11 @@
-import Home from "./(pages)/Home/page";
-import { Carousel } from "~/components/Carousel/Carousel";
-
-
+import Link from "next/link";
+import Hero from "../components/Hero";
+import About from "../components/About";
 export default function HomePage() {
   return (
-    <div>
-      <Home />
-      <Carousel />
+    <div className="min-h-screen overflow-hidden flex flex-col">
+      <Hero />
+      <About />
     </div>
   );
 }

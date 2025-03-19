@@ -8,6 +8,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import { faClock, faIndianRupeeSign, faMapMarkerAlt, faStar,  } from "@fortawesome/free-solid-svg-icons"
 import StarRating from "../rating"
 import {faHeart} from "@fortawesome/free-regular-svg-icons"
+import { Carousel } from "~/components/Carousel/Carousel"
 
 
 
@@ -44,6 +45,7 @@ const Home = () => {
           );
         })}
       </div>
+      <Carousel/>
     </div>
   )
 }
