@@ -1,0 +1,203 @@
+.wrapper {
+    width: 100%;
+    max-width: 90rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin: 0 auto;
+  }
+  
+  .brand-logo {
+    width: 3rem;
+  }
+  
+  .navbar1 {
+    width: 100%;
+    height: 4rem;
+    padding: 1.875rem;
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 20;
+    transition: all 0.3s ease-out;
+    position: fixed;
+    padding-top: 3vw;
+    padding-bottom: 3vw;
+    backdrop-filter: blur(4px);
+  }
+  
+  .expanded {
+    background-color: var(--bg-color-primary);
+    box-shadow: 0px 4px 12px 0px var(--box-shadow-color-primary);
+    padding: 2rem !important;
+  }
+  
+  .navbar1 .logo {
+    color: var(--text-color-grey-light);
+    font-size: 1.75rem;
+    font-weight: 600;
+  }
+  
+  .navbar1 .links-nav {
+    list-style: none;
+    display: flex;
+    color: var(--text-color-grey-light);
+    cursor: pointer;
+  }
+  
+  .navbar1 .links-nav li {
+    margin: 0 0.9375rem;
+    color: var(--text-color-grey-light);
+    font-size: 1.3rem;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .links-nav a {
+    transition: all 0.15s ease-in-out;
+    color: var(--text-color-grey) !important;
+  }
+  
+  .links-nav a:hover {
+    color: var(--bg-color-primary-light) !important;
+  }
+  
+  .links-nav a.active {
+    color: var(--text-color-white) !important;
+  }
+  
+  .navbar1 .toggle-icon {
+    display: none;
+  }
+  
+  .links-nav {
+    margin-bottom: 0 !important;
+  }
+  
+  .imgactivehlder {
+    width: 2vw;
+    height: 2vw;
+  }
+  
+  .profileactivesignin {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+  }
+  
+  @media (max-width: 768px) {
+    .navbar1 {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      transition: 0.5s all ease-in-out;
+      /* padding-top: 10vw !important;
+      padding-bottom: 10vw !important;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%; */
+      &#bgchng {
+        background-color: var(--bg-color-primary);
+      }
+    }
+  
+    .navbar1.expanded {
+      height: 100vh;
+      background-color: var(--bg-color-primary);
+    }
+  
+    .navbar1.expanded .links-nav {
+      position: absolute;
+      top: 7.5rem;
+      left: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 1;
+      padding-left: 0 !important;
+    }
+  
+    .navbar1.expanded .links-nav li {
+      margin: 0.9375rem 0;
+      font-size: 1.5rem;
+    }
+  
+    .navbar1 .logo {
+      position: absolute;
+      top: 0.5rem;
+      left: 0.9375rem;
+    }
+  
+    .navbar1 .toggle-icon {
+      display: block;
+      color: var(--text-color-white);
+      position: absolute;
+      top: 1.4rem;
+      right: 1.25rem;
+    }
+  
+    .navbar1 .links-nav {
+      position: absolute;
+      top: -40.75rem;
+      left: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: all 0.5s ease-in-out;
+    }
+  
+    .navbar1 .links-nav li {
+      margin: 0.9375rem 0;
+      font-size: 1.5rem;
+    }
+  }
+  
+  @media only screen and (max-width: 991px) and (min-width: 768px) {
+    .navbar1 .links-nav li {
+      font-size: 1.3vw;
+    }
+  }
+  
+  @media (max-width: 660px) {
+    .imgactivehlder {
+      width: 15vw;
+      height: 15vw;
+    }
+  }
+  
+  @media only screen and (max-height: 500px) {
+    .navbar1.expanded .links-nav {
+      top: 4.5rem;
+    }
+  }
+  
+  @media only screen and (max-height: 400px) {
+    .navbar1.expanded .links-nav {
+      top: 3.8rem;
+    }
+  
+    .navbar1.expanded .links-nav li {
+      margin-top: 0.2rem;
+      margin-bottom: 0.2rem;
+    }
+  }
+  
+  @media (max-height: 350px) {
+    .links-nav {
+      margin-top: -5vh !important;
+    }
+  
+    .navbar1 .links-nav li {
+      font-size: 6vh !important;
+    }
+  }
+  
