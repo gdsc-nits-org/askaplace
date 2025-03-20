@@ -1,5 +1,4 @@
 .sliderContainer {
-  width: 100%;
   background-color: #6BE4A2;
   background-image: url('https://res.cloudinary.com/dtt4ftdrw/image/upload/v1742239137/c1254233831568e81844f23ba4f5d891_ftudg1.png');
   overflow: hidden;
@@ -30,9 +29,9 @@
 }
 
 .card {
-  min-width: 550px;
+  width: 100%;
   max-width: 600px;
-  height: 27rem;
+  max-height: 27rem;
   background: white;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -105,3 +104,25 @@
   background: #333;
   cursor: pointer;
 }
+@media(max-width:1500px){
+  .sliderContainer{
+    width: 91rem;
+  }
+}
+@media(max-width:1000px){
+  .sliderContainer{
+    width: 91rem;
+  }
+}
+
+@media(max-width:700px){
+  .sliderContainer{
+    width: 48rem;
+  }
+}
+@media (max-width:400px){
+  .sliderContainer{
+    width: 44rem;
+  }
+}
+

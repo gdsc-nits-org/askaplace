@@ -45,7 +45,7 @@ body{
 }
 .devGrid{
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(350px,1fr));
+    grid-template-columns: repeat(auto-fit,minmax(450px,1fr));
     gap:10rem;
     padding: 1rem 8rem 1rem 8rem;
 }
@@ -60,6 +60,7 @@ body{
     border: 2px solid black;
     position: relative;
     width: 100%;
+    max-width: 500px;
     height: 45rem;
 }
 
@@ -180,4 +181,103 @@ body{
     gap: 10px;
     font-size: 25px;
     font-weight: 500;
+}
+@media (max-width: 1500px) {
+    .titleContainer{
+        gap: 500px;
+        padding-left: 10rem;
+    }
+    .title{
+        font-size: 70px;
+    }
+    .titleDestination{
+        font-size: 70px;
+    }
+    .location{
+        font-size: 20px;
+    }
+    .devGrid{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        padding: 3rem 8rem 3rem 8rem;
+    }
+    .card{
+        width: 550px;
+        height: 45rem;
+    }
+    .btn{
+        margin-right: 3rem;
+    }
+}
+
+
+
+@media (max-width: 1000px) {
+    .titleContainer{
+        gap: 500px;
+        padding-left: 10rem;
+    }
+    .title{
+        font-size: 70px;
+    }
+    .titleDestination{
+        font-size: 70px;
+    }
+    .location{
+        font-size: 20px;
+    }
+    .devGrid{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        padding: 3rem 8rem 3rem 8rem;
+    }
+    .card{
+        width: 550px;
+        height: 45rem;
+    }
+    .btn{
+        margin-right: 3rem;
+    }
+}
+@media (max-width: 700px) {
+    .titleContainer{
+        gap: 15px;
+        padding-left: 8rem;
+    }
+    .title{
+        font-size: 55px;
+    }
+    .titleDestination{
+        font-size:55px;
+    }
+    .location{
+        font-size: 20px;
+    }
+    .devGrid{
+        grid-template-columns: repeat(1, 1fr)
+    }
+    .btn{
+        right: 13rem;
+    }
+}
+@media (max-width: 400px) {
+    .titleContainer{
+        gap: 50px;
+        padding-left: 5rem;
+    }
+    .title{
+        font-size: 50px;
+    }
+    .titleDestination{
+        font-size: 50px;
+    }
+    .location{
+        font-size: 20px;
+    }
+    .devGrid{
+        padding: 1rem 5rem;
+    }
+    .btn{
+        margin-right: 3rem;
+    }
 }

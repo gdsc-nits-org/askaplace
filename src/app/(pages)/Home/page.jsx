@@ -6,9 +6,9 @@ import Image from "next/image"
 import cards from "../../../../public/data/cards.json"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import { faClock, faIndianRupeeSign, faMapMarkerAlt, faStar,  } from "@fortawesome/free-solid-svg-icons"
-import StarRating from "../rating"
+import StarRating from "../../../components/rating"
 import {faHeart} from "@fortawesome/free-regular-svg-icons"
-import { Carousel } from "~/components/Carousel/Carousel"
+import { Carousel } from "~/components/Carousel/page"
 
 
 
@@ -45,7 +45,7 @@ const Home = () => {
           );
         })}
       </div>
-      <Carousel/>
+      <Carousel />
     </div>
   )
 }
