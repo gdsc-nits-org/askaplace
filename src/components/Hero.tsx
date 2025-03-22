@@ -12,7 +12,7 @@ function Hero() {
           <span className=" text-4xl lg:text-6xl sm:text-5xl md:text-5xl font-bold text-left">
             <span className=" text-primary ">WONDERFUL</span> FEELING
           </span>
-          <p className="text-lg lg:text-2xl sm:text-xl md:text-2xl text-left max-w-lg">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta repellat dignissimos quos voluptatum quas vitae fugiat, nisi rerum recusandae quia, corporis earum facere minima, error velit sunt sed animi. Id.</p>
+          <p className="text-lg lg:text-2xl sm:text-lg md:text-2xl text-left max-w-lg">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta repellat dignissimos quos voluptatum quas vitae fugiat, nisi rerum recusandae quia, corporis earum facere minima, error velit sunt sed animi. Id.</p>
           <button className="w-auto h-[45px] md:h-[50px] lg:h-[50px] mt-6 px-6 py-2 bg-green-600 hover:bg-green-700 flex items-center justify-center text-white rounded-full gap-2">
             <span className="text-base md:text-base lg:text-lg font-semibold">
               Read More
