@@ -5,7 +5,7 @@ function About() {
   return (
     <div className=" relative flex justify-center items-center w-screen h-screen bg-blue-500 bg-[url(/beach.jpeg)] bg-cover bg-center inset-0 overflow-hidden">
        <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-t from-transparent to-gray-600"></div>
-       
+       <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-b from-transparent to-gray-500"></div>
        <div className="flex flex-col justify-center items-center gap-1 lg:gap10 md:gap-10 w-full h-auto">
           <div className="flex flex-col justify-center items-center w-full h-auto ">
             <h2 className="text-4xl sm:text-4xl lg:text-5xl font-semibold ">
@@ -39,7 +39,7 @@ function About() {
             </div>
         </div>
     </div>
-  )
+  );
 }
 
 export default About
