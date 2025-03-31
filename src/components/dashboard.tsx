@@ -66,14 +66,14 @@ export default function ProfileDashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-4 md:p-8">
+    <div className="min-h-screen   bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-4 md:p-8">
       <div className="max-w-4xl mx-auto">
         <Card className="bg-gray-800/50 backdrop-blur-lg border-gray-700/50">
           <CardContent className="p-6">
             {/* Profile Header */}
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-6 mb-8">
+            <div className="flex flex-col md:flex-row items-center md:items-center gap-6 md:gap-14 mb-8">
               <div className="relative group">
-                <Avatar className="w-32 h-32 border-4 border-gray-700">
+                <Avatar className="w-32 h-32  md:w-64 md:h-64 border-4 border-gray-700">
                   <AvatarImage src={avatarUrl} alt="Profile" />
                   <AvatarFallback className="text-2xl">JD</AvatarFallback>
                 </Avatar>
@@ -96,8 +96,8 @@ export default function ProfileDashboard() {
                 />
               </div>
 
-              <div className="flex-1 text-center md:text-left">
-                <div className="flex items-center justify-center md:justify-start gap-2 mb-2">
+              <div className="flex flex-col  text-left  md:text-left">
+                <div className="flex items-center justify-center md:justify-start gap-2 ">
                   {isEditing.name ? (
                     <Input
                       className="bg-gray-700/50 text-white w-full md:w-64"
@@ -117,7 +117,7 @@ export default function ProfileDashboard() {
                   </Button>
                 </div>
 
-                <div className="flex items-center justify-center md:justify-start gap-2 mb-4">
+                <div className="flex items-center justify-center md:justify-start gap-2">
                   {isEditing.username ? (
                     <Input
                       className="bg-gray-700/50 text-white w-full md:w-64"
@@ -136,7 +136,8 @@ export default function ProfileDashboard() {
                     <Edit2 className="h-4 w-4" />
                   </Button>
                 </div>
-
+                <div className="My-interests flex flex-col gap-4 mt-4">
+                  <p className="text-gray-300 text-2xl ">Interests</p>
                 <div className="flex items-center justify-center md:justify-start gap-2">
                   {isEditing.bio ? (
                     <div className="flex-1 flex gap-2">
@@ -176,163 +177,12 @@ export default function ProfileDashboard() {
                     </>
                   )}
                 </div>
+                </div>
+
               </div>
             </div>
 
-            {/* Profile Details */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-4">
-                <div className="flex items-center gap-2">
-                  <MapPin className="h-5 w-5 text-gray-400" />
-                  <div className="flex-1">
-                    {isEditing.location ? (
-                      <div className="flex gap-2">
-                        <Input
-                          className="bg-gray-700/50 text-white"
-                          value={location}
-                          onChange={(e) => setLocation(e.target.value)}
-                        />
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          className="text-green-400 hover:text-green-300"
-                          onClick={() => handleSave('location')}
-                        >
-                          <Save className="h-4 w-4" />
-                        </Button>
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          className="text-red-400 hover:text-red-300"
-                          onClick={() => handleCancel('location')}
-                        >
-                          <X className="h-4 w-4" />
-                        </Button>
-                      </div>
-                    ) : (
-                      <div className="flex items-center gap-2">
-                        <span className="text-gray-300">{location}</span>
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          className="text-gray-400 hover:text-white"
-                          onClick={() => toggleEdit('location')}
-                        >
-                          <Edit2 className="h-4 w-4" />
-                        </Button>
-                      </div>
-                    )}
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <Mail className="h-5 w-5 text-gray-400" />
-                  <div className="flex-1">
-                    {isEditing.email ? (
-                      <div className="flex gap-2">
-                        <Input
-                          className="bg-gray-700/50 text-white"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                        />
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          className="text-green-400 hover:text-green-300"
-                          onClick={() => handleSave('email')}
-                        >
-                          <Save className="h-4 w-4" />
-                        </Button>
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          className="text-red-400 hover:text-red-300"
-                          onClick={() => handleCancel('email')}
-                        >
-                          <X className="h-4 w-4" />
-                        </Button>
-                      </div>
-                    ) : (
-                      <div className="flex items-center gap-2">
-                        <span className="text-gray-300">{email}</span>
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          className="text-gray-400 hover:text-white"
-                          onClick={() => toggleEdit('email')}
-                        >
-                          <Edit2 className="h-4 w-4" />
-                        </Button>
-                      </div>
-                    )}
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <LinkIcon className="h-5 w-5 text-gray-400" />
-                  <div className="flex-1">
-                    {isEditing.website ? (
-                      <div className="flex gap-2">
-                        <Input
-                          className="bg-gray-700/50 text-white"
-                          value={website}
-                          onChange={(e) => setWebsite(e.target.value)}
-                        />
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          className="text-green-400 hover:text-green-300"
-                          onClick={() => handleSave('website')}
-                        >
-                          <Save className="h-4 w-4" />
-                        </Button>
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          className="text-red-400 hover:text-red-300"
-                          onClick={() => handleCancel('website')}
-                        >
-                          <X className="h-4 w-4" />
-                        </Button>
-                      </div>
-                    ) : (
-                      <div className="flex items-center gap-2">
-                        <a href={website} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300">
-                          {website}
-                        </a>
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          className="text-gray-400 hover:text-white"
-                          onClick={() => toggleEdit('website')}
-                        >
-                          <Edit2 className="h-4 w-4" />
-                        </Button>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-
-              {/* Social Links */}
-              <div className="space-y-4">
-                <h2 className="text-lg font-semibold text-white mb-4">Social Links</h2>
-                <div className="flex flex-wrap gap-4">
-                  <Button variant="outline" className="bg-gray-700/50 border-gray-600 text-white hover:bg-gray-600">
-                    <Twitter className="h-4 w-4 mr-2" />
-                    Twitter
-                  </Button>
-                  <Button variant="outline" className="bg-gray-700/50 border-gray-600 text-white hover:bg-gray-600">
-                    <Github className="h-4 w-4 mr-2" />
-                    GitHub
-                  </Button>
-                  <Button variant="outline" className="bg-gray-700/50 border-gray-600 text-white hover:bg-gray-600">
-                    <Linkedin className="h-4 w-4 mr-2" />
-                    LinkedIn
-                  </Button>
-                </div>
-              </div>
-            </div>
+            
           </CardContent>
         </Card>
       </div>
