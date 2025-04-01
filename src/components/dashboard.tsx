@@ -15,7 +15,8 @@ import {
   Linkedin,
   Save,
   X,
-  Trash2 // Import Trash2 icon
+  Trash2, // Import Trash2 icon
+  Plus // Import Plus icon
 } from "lucide-react";
 import { useRouter } from 'next/navigation'; // Import useRouter
 
@@ -116,6 +117,11 @@ export default function ProfileDashboard() {
   // Handler for deleting a post
   const handleDeletePost = (postId: string) => {
     setPosts(currentPosts => currentPosts.filter(post => post.id !== postId));
+  };
+
+  // Handler for creating a new post
+  const handleNewPost = () => {
+    router.push('/dashboard/posts/new'); // Navigate to new post page
   };
 
 
@@ -255,7 +261,17 @@ export default function ProfileDashboard() {
 
         {/* Travel Posts Section */}
         <div className="mt-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">My Travel Posts</h2>
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-2xl font-semibold text-white">My Travel Posts</h2>
+            <Button
+              variant="outline"
+              size="sm"
+              className="text-green-400 border-green-400 hover:bg-green-900/30 hover:text-green-300"
+              onClick={handleNewPost}
+            >
+              <Plus className="h-4 w-4 mr-1" /> New Post
+            </Button>
+          </div>
           {posts.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {posts.map((post) => (
