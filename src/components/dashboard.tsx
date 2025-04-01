@@ -20,7 +20,16 @@ import {
 export default function ProfileDashboard() {
   const [name, setName] = useState<string>("John Doe");
   const [username, setUsername] = useState<string>("johndoe123");
-  const [bio, setBio] = useState<string>("Full-stack developer passionate about creating beautiful and functional web applications.");
+  // Changed bio state to hold an array of interests
+  const [bio, setBio] = useState<string[]>([
+    "Web Development", 
+    "React", 
+    "Node.js", 
+    "TypeScript", 
+    "Tailwind CSS"
+  ]);
+  // State to manage the input field value during editing
+  const [editBioInput, setEditBioInput] = useState<string>(bio.join(", ")); 
   const [location, setLocation] = useState<string>("San Francisco, CA");
   const [email, setEmail] = useState<string>("john.doe@example.com");
   const [website, setWebsite] = useState<string>("https://johndoe.dev");
@@ -49,8 +58,12 @@ export default function ProfileDashboard() {
       reader.readAsDataURL(file);
     }
   };
-  
+
   const toggleEdit = (field: string) => {
+    if (field === 'bio' && !isEditing.bio) {
+      // When starting to edit bio, initialize the input field with current tags
+      setEditBioInput(bio.join(", "));
+    }
     setIsEditing(prev => ({
       ...prev,
       [field]: !prev[field]
@@ -58,16 +71,24 @@ export default function ProfileDashboard() {
   };
 
   const handleSave = (field: string) => {
+    if (field === 'bio') {
+      // Split the comma-separated input into an array of tags
+      setBio(editBioInput.split(',').map(tag => tag.trim()).filter(tag => tag !== ''));
+    }
     toggleEdit(field);
   };
 
   const handleCancel = (field: string) => {
+    // Reset input field if canceling bio edit
+    if (field === 'bio') {
+      setEditBioInput(bio.join(", "));
+    }
     toggleEdit(field);
   };
 
   return (
     <div className="min-h-screen   bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-4 md:p-8">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-[60rem] mx-auto">
         <Card className="bg-gray-800/50 backdrop-blur-lg border-gray-700/50">
           <CardContent className="p-6">
             {/* Profile Header */}
@@ -141,10 +162,12 @@ export default function ProfileDashboard() {
                 <div className="flex items-center justify-center md:justify-start gap-2">
                   {isEditing.bio ? (
                     <div className="flex-1 flex gap-2">
+                      {/* Use editBioInput for the controlled input */}
                       <Input
                         className="bg-gray-700/50 text-white"
-                        value={bio}
-                        onChange={(e) => setBio(e.target.value)}
+                        value={editBioInput}
+                        onChange={(e) => setEditBioInput(e.target.value)}
+                        placeholder="Enter interests, separated by commas"
                       />
                       <Button
                         variant="ghost"
@@ -165,7 +188,17 @@ export default function ProfileDashboard() {
                     </div>
                   ) : (
                     <>
-                      <p className="text-gray-300">{bio}</p>
+                      {/* Render tags */}
+                      <div className="flex flex-wrap gap-2">
+                        {bio.map((interest, index) => (
+                          <span 
+                            key={index} 
+                            className="bg-blue-600/70 text-white text-xs font-medium px-3 py-1 rounded-full"
+                          >
+                            #{interest}
+                          </span>
+                        ))}
+                      </div>
                       <Button
                         variant="ghost"
                         size="icon"
@@ -188,4 +221,4 @@ export default function ProfileDashboard() {
       </div>
     </div>
   );
-} 
+}
