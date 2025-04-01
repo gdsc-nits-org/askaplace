@@ -261,8 +261,9 @@ export default function ProfileDashboard() {
 
         {/* Travel Posts Section */}
         <div className="mt-8">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-2xl font-semibold text-white">My Travel Posts</h2>
+          {/* Apply mobile-first stacking and centering, then row layout for sm+ */}
+          <div className="flex flex-col items-center gap-2 mb-4 sm:flex-row sm:justify-between sm:items-center">
+            <h2 className="text-2xl font-semibold text-white text-center sm:text-left">My Travel Posts</h2>
             <Button
               variant="outline"
               size="sm"
