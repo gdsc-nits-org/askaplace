@@ -14,10 +14,32 @@ import {
   Github, 
   Linkedin,
   Save,
-  X
+  X,
+  Trash2 // Import Trash2 icon
 } from "lucide-react";
+import { useRouter } from 'next/navigation'; // Import useRouter
+
+// Define Post type
+interface Post {
+  id: string;
+  title: string;
+  description: string;
+  imageUrl: string; // Added imageUrl for display
+}
+
+// Mock data for travel posts
+const mockPosts: Post[] = [
+  { id: '1', title: 'Trip to the Mountains', description: 'An amazing hike through the Alps.', imageUrl: 'https://imgs.search.brave.com/y06h9C4UGnGFj-mVy4MQZOOszfCkS3eEEjXJLiVEOiI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90cmF2/ZWxvZ3lpbmRpYS5i/LWNkbi5uZXQvYmxv/Zy93cC1jb250ZW50/L3VwbG9hZHMvMjAx/OC8xMC9CdW1sYS1Q/YXNzLVRhd2FuZy5q/cGc' },
+  { id: '2', title: 'Beach Getaway', description: 'Relaxing week by the sea.', imageUrl: 'https://imgs.search.brave.com/HGUVCFPLBBnt7g01V8K7upDPa1D3KI-tF8mxAMkMUSA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTAz/MDU5MTI0Ni9waG90/by9kcmVhbS1iZWFj/aC1pc2xhbmQuanBn/P3M9NjEyeDYxMiZ3/PTAmaz0yMCZjPXRo/MVdTY0tCWEdyc3p0/aUlVemRmNnJRMFYx/a3RITTM0TVJ6MUk1/TEZOUmM9' },
+  { id: '3', title: 'City Exploration', description: 'Discovering the hidden gems of Paris.', imageUrl: 'https://imgs.search.brave.com/N-MpE0ZiY9acOE2OJGnEcYQmPp0CHKBBDbm3UcjuxJA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAyLzgzLzgzLzkz/LzM2MF9GXzI4Mzgz/OTMwMl95dDZKSXNF/OTZQajRQeWRGRGNC/TktEVW51U3BZQjlo/MC5qcGc' },
+  { id: '4', title: 'City Exploration', description: 'Discovering the hidden gems of Paris.', imageUrl: 'https://via.placeholder.com/300x200?text=City' },
+];
+
 
 export default function ProfileDashboard() {
+  const router = useRouter(); // Initialize router
+  const [posts, setPosts] = useState<Post[]>(mockPosts); // Add state for posts
+
   const [name, setName] = useState<string>("John Doe");
   const [username, setUsername] = useState<string>("johndoe123");
   // Changed bio state to hold an array of interests
@@ -86,9 +108,21 @@ export default function ProfileDashboard() {
     toggleEdit(field);
   };
 
+  // Handler for editing a post
+  const handleEditPost = (postId: string) => {
+    router.push(`/dashboard/posts/edit/${postId}`); // Navigate to edit page
+  };
+
+  // Handler for deleting a post
+  const handleDeletePost = (postId: string) => {
+    setPosts(currentPosts => currentPosts.filter(post => post.id !== postId));
+  };
+
+
   return (
-    <div className="min-h-screen   bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-4 md:p-8">
-      <div className="max-w-[60rem] mx-auto">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-4 md:p-8">
+      <div className="max-w-[60rem] mx-auto space-y-8"> {/* Added space-y-8 for spacing between sections */}
+        {/* Profile Card */}
         <Card className="bg-gray-800/50 backdrop-blur-lg border-gray-700/50">
           <CardContent className="p-6">
             {/* Profile Header */}
@@ -215,9 +249,47 @@ export default function ProfileDashboard() {
               </div>
             </div>
 
-            
+
           </CardContent>
         </Card>
+
+        {/* Travel Posts Section */}
+        <div className="mt-8">
+          <h2 className="text-2xl font-semibold text-white mb-4">My Travel Posts</h2>
+          {posts.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {posts.map((post) => (
+                <Card key={post.id} className="bg-gray-800/60 border-gray-700/60 overflow-hidden">
+                  <img src={post.imageUrl} alt={post.title} className="w-full h-48 object-cover" />
+                  <CardContent className="p-4">
+                    <h3 className="text-lg font-semibold text-white mb-2">{post.title}</h3>
+                    <p className="text-gray-400 text-sm mb-4">{post.description}</p>
+                    <div className="flex justify-end gap-2">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="text-blue-400 border-blue-400 hover:bg-blue-900/30 hover:text-blue-300"
+                        onClick={() => handleEditPost(post.id)}
+                      >
+                        <Edit2 className="h-4 w-4 mr-1" /> Edit
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="text-red-400 border-red-400 hover:bg-red-900/30 hover:text-red-300"
+                        onClick={() => handleDeletePost(post.id)}
+                      >
+                        <Trash2 className="h-4 w-4 mr-1" /> Delete
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          ) : (
+            <p className="text-gray-500 text-center">You haven't posted any travels yet.</p>
+          )}
+        </div>
       </div>
     </div>
   );
