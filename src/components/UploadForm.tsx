@@ -18,19 +18,19 @@ interface PlaceFormData {
 }
 
 interface StayFormData {
-  name: string;
-  type: string;
+  name?: string;
+  type?: string;
   website?: string;
-  location: string;
-  landmark: string;
-  contact: string;
-  manager: string;
+  location?: string;
+  landmark?: string;
+  contact?: string;
+  manager?: string;
 }
 
 interface ExpenseFormData {
-  name: string;
-  rate: string;
-  total: string;
+  name?: string;
+  rate?: string;
+  total?: string;
 }
 
 type UploadFormProps = {
@@ -135,13 +135,15 @@ const UploadForm: React.FC<UploadFormProps> = ({ mode, placeId }) => {
 
   const handleStayChange = (index: number, field: keyof StayFormData, value: string) => {
     const updatedStay = [...stayOptions];
+
     updatedStay[index] = {
       ...updatedStay[index],
-      [field]: value,
+      [field]: value ?? "", // Ensures value is never undefined
     };
+
     setStayOptions(updatedStay);
     setFormData(prev => ({ ...prev, stay: updatedStay }));
-  };
+};
 
   const handleExpenseChange = (index: number, field: keyof ExpenseFormData, value: string) => {
     const updatedExpenses = [...expenses];
