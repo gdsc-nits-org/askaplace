@@ -211,7 +211,7 @@ const UploadForm: React.FC<UploadFormProps> = ({ mode, placeId }) => {
 
   return (
     <div className="max-w-3xl mx-auto p-6 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl block mx-auto font-sans w-[30%] font-semibold mb-4">{mode === 'upload' ? 'Upload a Place' : 'Modify Place Details'}</h2>
+      <h2 className="text-2xl block mx-auto font-sans w-[30%] text-nowrap font-semibold mb-4">{mode === 'upload' ? 'Upload a Place' : 'Modify Place Details'}</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <h5 className='text-lg font-semibold -my-2'>Enter Place</h5>
         <input type="text" name="place" placeholder="Place Name" value={formData.place} onChange={handleChange} className="w-full p-2 border rounded" required />
