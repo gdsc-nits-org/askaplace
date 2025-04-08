@@ -18,7 +18,7 @@ const Footer = () => {
       {/* Move the Image Outside the Footer */}
       
       <div
-        className="absolute -top-20 right-28 w-48 h-48 rounded-full overflow-hidden shadow-lg"
+        className="absolute -top-20 right-28 w-48 h-48 rounded-full overflow-hidden shadow-lg hidden md:block"
         style={{ zIndex: 50 }}
       >
         <img
