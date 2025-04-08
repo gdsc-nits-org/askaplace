@@ -135,7 +135,7 @@ export default function ProfileDashboard() {
 
   // --- Post Handlers ---
   const handleEditPost = (postId: string) => {
-    router.push(`/dashboard/posts/edit/${postId}`);
+    router.push(`/dashboard/${username}/${postId}/modify`);
   };
 
   const handleDeletePost = (postId: string) => {
@@ -145,7 +145,7 @@ export default function ProfileDashboard() {
   };
 
   const handleNewPost = () => {
-    router.push('/dashboard/posts/new');
+    router.push(`/dashboard/${username}/new/upload`);
   };
 
   return (
