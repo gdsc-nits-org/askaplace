@@ -1,4 +1,3 @@
-import Navbar from "../../components/navbar";
 import ViewMoreButton from "../../components/viewMorebutton";
 import DescriptionContent from "../../components/description";
 import Card from "../../components/card";
@@ -12,7 +11,7 @@ export default function Page({ params }) {
 
   return (
     <div>
-      <Navbar />
+
       <h1 className="text-6xl p-0 font-bold m-40 my-5 sm-m-20">{id}</h1>
       <Image
         src={dots}

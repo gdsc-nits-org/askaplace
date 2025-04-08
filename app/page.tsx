@@ -1,4 +1,4 @@
-import Navbar from "./components/navbar";
+
 import ViewMoreButton from "./components/viewMorebutton"; // Import the client component
 import Description from "./components/description";
 import Card from "./components/card";
@@ -10,7 +10,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div >
-      <Navbar />
+
       <h1 className="text-6xl p-0 font-bold m-40 my-5 sm-m-20">Haflong</h1>
       <Image src={dots} alt="dots" className="absolute top-20 right-0 -z-10 h-[400px] w-[600px]"/>
       {/*  the client component is embedded here */}
