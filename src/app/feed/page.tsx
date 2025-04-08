@@ -1,12 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
-/* eslint-disable react/jsx-key */
-
-import styles from "./homePage.module.scss"
+import styles from "./feedPage.module.scss"
 import Image from "next/image"
-import cards from "../../../../public/data/cards.json"
+import cards from "../../../public/data/cards.json"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import { faClock, faIndianRupeeSign, faMapMarkerAlt, faStar,  } from "@fortawesome/free-solid-svg-icons"
-import StarRating from "../../../components/rating"
+import StarRating from "../../components/rating"
 import {faHeart} from "@fortawesome/free-regular-svg-icons"
 import { Carousel } from "~/components/Carousel/page"
 
