@@ -1,20 +1,25 @@
-import ViewMoreButton from "../../components/viewMorebutton";
-import DescriptionContent from "../../components/description";
-import Card from "../../components/card";
-import Map from "../../components/map";
-import BudgetAnalysis from "../../components/budgetAnalysis";
-import dots from "../../../public/assets/dots.jpg";
+"use client"
+import ViewMoreButton from "@/src/components/description_components/viewMorebutton";
+import DescriptionContent from "@/src/components/description_components/description";
+import Card from "@/src/components/description_components/card";
+import Map from "@/src/components/description_components/map";
+import BudgetAnalysis from "@/src/components/description_components/budgetAnalysis";
 import Image from "next/image";
+import { useParams } from 'next/navigation';
 
-export default function Page({ params }) {
-  const { id } = params; 
+
+export default function Page() {
+
+  const { id } =  useParams(); 
 
   return (
     <div>
 
       <h1 className="text-6xl p-0 font-bold m-40 my-5 sm-m-20">{id}</h1>
       <Image
-        src={dots}
+        src={"/assets/dots.jpg"}
+        width={1920} 
+        height={400}
         alt="dots"
         className="absolute top-20 right-0 -z-10 h-[400px] w-[600px]"
       />
