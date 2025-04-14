@@ -5,10 +5,6 @@
 import "./src/env.js";
 
 /** @type {import("next").NextConfig} */
-const config = {
-    images: {
-        domains:["s3-alpha-sig.figma.com"],
-    },
-};
+const config = {};
 
 export default config;
