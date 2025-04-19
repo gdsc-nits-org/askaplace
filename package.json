@@ -22,7 +22,11 @@
     "pnpm": "^10.6.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+<<<<<<< HEAD
     "react-router-dom": "^7.4.0",
+=======
+    "react-router-dom": "^7.4.1",
+>>>>>>> e057117d8db8168f4cf8040e265c69073ec02c4c
     "zod": "^3.23.3"
   },
   "devDependencies": {
