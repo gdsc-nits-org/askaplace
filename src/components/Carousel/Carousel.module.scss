@@ -1,0 +1,128 @@
+.sliderContainer {
+  background-color: #6BE4A2;
+  background-image: url('https://res.cloudinary.com/dtt4ftdrw/image/upload/v1742239137/c1254233831568e81844f23ba4f5d891_ftudg1.png');
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 50rem;
+  padding-left: 4rem;
+  margin-top: 10rem;
+}
+.headline{
+  color: black;
+  font-size: 4rem;
+  font-weight: 600;
+  padding-top: 2rem;
+}
+.headline1{
+  color: black;
+  font-size: 30px;
+  font-weight: 300;
+  padding-bottom: 2rem;
+}
+.cardWrapper{
+  display: flex;
+  flex-direction: row;
+  gap: 5rem;
+  padding-left: 5rem;
+}
+
+.card {
+  width: 100%;
+  max-width: 600px;
+  max-height: 27rem;
+  background: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+}
+
+.card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+.like{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 5%;
+  left:80%;
+  opacity: 0.8;
+}
+
+.cardContent {
+  padding: 1rem;
+}
+.span{
+  font-size: 20px;
+  color: black;
+}
+
+.title{
+  padding-top: 5px;
+  font-size: 20px;
+  color: black;
+  font-weight: 700;
+}
+
+.cardMeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cardMeta img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.viewMore {
+  display: flex;
+  justify-content: left;
+  margin-top: 6rem;
+}
+
+.viewMore button {
+  background: black;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.viewMore button:hover {
+  background: #333;
+  cursor: pointer;
+}
+@media(max-width:1500px){
+  .sliderContainer{
+    width: 91rem;
+  }
+}
+@media(max-width:1000px){
+  .sliderContainer{
+    width: 91rem;
+  }
+}
+
+@media(max-width:700px){
+  .sliderContainer{
+    width: 48rem;
+  }
+}
+@media (max-width:400px){
+  .sliderContainer{
+    width: 44rem;
+  }
+}
+
