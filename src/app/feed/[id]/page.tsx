@@ -5,7 +5,9 @@ import Card from "@/src/components/description_components/card";
 import Map from "@/src/components/description_components/map";
 import BudgetAnalysis from "@/src/components/description_components/budgetAnalysis";
 import Image from "next/image";
-import FAQ from "@/src/components/description_components/review";
+import Review from "@/src/components/description_components/review";
+import Footer from "@/src/components/description_components/footer";
+import Faq from "@/src/components/description_components/faq";
 
 import { useParams } from "next/navigation";
 
@@ -25,21 +27,23 @@ export default function Page() {
       {/* The client component is embedded here */}
       <ViewMoreButton />
       <DescriptionContent />
-      <h1 className="text-5xl p-0 font-medium m-40 my-5 text-center">
+      {/* <h1 className="text-5xl p-0 font-medium m-40 my-5 text-center">
         Top places to visit in {id}
-      </h1>
+      </h1> */}
       <Card />
       <Card />
       <Card />
       <Map /> {/* Map dynamically updates based on the route parameter */}
-      <h1 className="text-5xl p-0 font-medium m-40 my-5 text-center">
+      {/* <h1 className="text-5xl p-0 font-medium m-40 my-5 text-center">
         Food and lodging in {id}
-      </h1>
+      </h1> */}
       <Card />
       <Card />
       <Card />
       <BudgetAnalysis />
-      <FAQ />
+      <Review />
+      <Faq />
+      <Footer/>
     </div>
   );
 }
